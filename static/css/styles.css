@@ -1,0 +1,38 @@
+body {
+  margin: 25px;
+  background-color: rgb(214, 214, 214);
+  font-family: arial, sans-serif;
+  font-size: 14px;
+}
+
+.container {
+  width: 60%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: 100%;
+    padding: 0 10px;
+  }
+  header,
+  footer {
+    text-align: center;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 600px) {
+  header nav ul {
+    display: block;
+  }
+  header nav li {
+    display: block;
+    margin: 0;
+  }
+}

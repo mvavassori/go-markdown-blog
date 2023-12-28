@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Name Surname's Blog</title>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1><a href="/">Name Surname</a></h1>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="container">
+      {{range .}}
+      <article>
+        <h2><a href="/posts/{{.Filename}}">{{.Title}}</a></h2>
+        <p>{{.Date}}</p>
+        <p>{{.Excerpt}}</p>
+      </article>
+      {{else}}
+      <p>No posts found.</p>
+      {{end}}
+    </main>
+    <footer>
+      <p>&copy; 2023 Name Surname</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Blog Post</title>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+    <!-- Link to your CSS file -->
+  </head>
+  <body>
+    <header>
+      <h1><a href="/">Name Surname</a></h1>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="container">{{.Content}}</div>
+      <!-- Placeholder for your blog content -->
+    </main>
+    <footer>
+      <div class="container">
+        <p>&copy; 2023 Name Surname. All rights reserved.</p>
+        <p>
+          Follow us on <a href="https://twitter.com/myblog">Twitter</a> and
+          <a href="https://facebook.com/myblog">Facebook</a>.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
