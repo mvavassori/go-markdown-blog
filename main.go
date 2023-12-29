@@ -192,6 +192,10 @@ func mdToHTML(md []byte) []byte {
 func main() {
 	fileServer := http.FileServer(http.Dir("./static"))
 	http.Handle("/static/", http.StripPrefix("/static/", fileServer))
+	// Serve about.html on the /about route
+    http.HandleFunc("/about", func(w http.ResponseWriter, r *http.Request) {
+        http.ServeFile(w, r, "./static/about.html")
+    })
 	http.HandleFunc("/", homeHandler)
 	http.HandleFunc("/posts/", postHandler)
 	fmt.Println("Starting server at port 8080")

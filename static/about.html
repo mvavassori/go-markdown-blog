@@ -2,13 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Name Surname's Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/static/styles.css" />
+    <title>About</title>
   </head>
   <body>
     <header>
       <h1><a href="/">Name Surname</a></h1>
-      <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+      <!-- Hamburger Icon -->
+      <input type="checkbox" id="menu-toggle" />
       <label for="menu-toggle" class="hamburger-icon">&#9776;</label>
       <nav>
         <ul>
@@ -18,19 +20,8 @@
         </ul>
       </nav>
     </header>
-
-    <main class="container">
-      <h2>Latest Posts</h2>
-      <hr />
-      {{range .}}
-      <article>
-        <h2><a href="/posts/{{.Filename}}">{{.Title}}</a></h2>
-        <p class="date">{{.Date}}</p>
-        <p>{{.Excerpt}}</p>
-      </article>
-      {{else}}
-      <p>No posts found.</p>
-      {{end}}
+    <main>
+      <p>this is an about page</p>
     </main>
     <footer>
       <p>&copy; 2023 Name Surname</p>
