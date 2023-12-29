@@ -1,4 +1,4 @@
-module github.com/mvavassori/go-mdblog
+module github.com/mvavassori/go-markdown-blog
 
 go 1.21.5
 
