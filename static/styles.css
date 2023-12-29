@@ -98,6 +98,39 @@ header nav ul li a:hover {
   z-index: 2;
 }
 
+/* Article styling */
+main article h2 a {
+  text-decoration: none;
+  color: black;
+}
+
+/* Hover effect */
+main article h2 a:hover {
+  text-decoration: underline;
+}
+
+.date {
+  color: rgb(104, 104, 104);
+  font-size: 12px;
+}
+
+/* About */
+.about {
+  font-size: large;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: white;
+  padding: 10px 0;
+  margin-top: auto;
+}
+
+footer p {
+  margin-left: 20px;
+}
+
 /* Mobile styles */
 @media screen and (max-width: 600px) {
   header {
@@ -151,35 +184,20 @@ header nav ul li a:hover {
   }
 }
 
-/* Article styling */
-main article h2 a {
-  text-decoration: none;
-  color: black;
-}
-
-/* Hover effect */
-main article h2 a:hover {
-  text-decoration: underline;
-}
-
-.date {
-  color: rgb(104, 104, 104);
-  font-size: 12px;
-}
-
-/* About */
-.about {
-  font-size: large;
-}
-
-/* Footer */
-footer {
-  background-color: #333;
-  color: white;
-  padding: 10px 0;
-  margin-top: auto;
-}
-
-footer p {
-  margin-left: 20px;
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: rgb(24, 26, 27);
+    color: rgb(232, 230, 227);
+  }
+  article {
+    background-color: rgb(32, 35, 37);
+    /* color: rgb(232, 230, 227); */
+  }
+  main article h2 a {
+    text-decoration: none;
+    color: rgb(232, 230, 227);
+  }
+  .date {
+    color: rgb(166, 159, 147);
+  }
 }
