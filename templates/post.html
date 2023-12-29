@@ -2,33 +2,28 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Blog Post</title>
-    <link rel="stylesheet" href="/static/css/styles.css" />
-    <!-- Link to your CSS file -->
+    <title>{{.Title}}</title>
+    <link rel="stylesheet" href="/static/styles.css" />
   </head>
   <body>
     <header>
       <h1><a href="/">Name Surname</a></h1>
+      <!-- Hamburger Icon -->
+      <input type="checkbox" id="menu-toggle" />
+      <label for="menu-toggle" class="hamburger-icon">&#9776;</label>
       <nav>
         <ul>
-          <li><a href="/">Home</a></li>
           <li><a href="/about">About</a></li>
-          <li><a href="/contact">Contact</a></li>
+          <li><a href="https://twitter.com/x">Twitter</a></li>
+          <li><a href="https://github.com/github">GitHub</a></li>
         </ul>
       </nav>
     </header>
     <main>
-      <div class="container">{{.Content}}</div>
-      <!-- Placeholder for your blog content -->
+      <div class="post">{{.Content}}</div>
     </main>
     <footer>
-      <div class="container">
-        <p>&copy; 2023 Name Surname. All rights reserved.</p>
-        <p>
-          Follow us on <a href="https://twitter.com/myblog">Twitter</a> and
-          <a href="https://facebook.com/myblog">Facebook</a>.
-        </p>
-      </div>
+      <p>&copy; 2023 Name Surname</p>
     </footer>
   </body>
 </html>

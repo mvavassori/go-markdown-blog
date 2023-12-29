@@ -8,7 +8,9 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"sort"
 	"strings"
+	"time"
 
 	"github.com/gomarkdown/markdown"
 	"github.com/gomarkdown/markdown/ast"
@@ -23,6 +25,7 @@ type BlogPost struct {
 	Date     string
 	Content  template.HTML
 	Filename string
+	ParsedDate time.Time
 }
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
@@ -54,15 +57,28 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 			// Extract front matter
 			frontMatter, _ := extractFrontMatter(string(markdownBytes))
 
+			// Parse the date from the front matter
+            parsedDate, err := time.Parse("2006-01-02", frontMatter["date"])
+            if err != nil {
+                log.Printf("Error parsing date: %v", err)
+                continue
+            }
+
 			// Create a new BlogPost struct and append it to the slice
 			posts = append(posts, BlogPost{
 				Title:    frontMatter["title"],
 				Excerpt:  frontMatter["excerpt"],
 				Date:     frontMatter["date"],
 				Filename: strings.TrimSuffix(file.Name(), ".md"),
+				ParsedDate: parsedDate,
 			})
 		}
 	}
+
+	// Sort the posts by date, newest first
+    sort.Slice(posts, func(i, j int) bool {
+        return posts[i].ParsedDate.After(posts[j].ParsedDate)
+    })
 
 	// Parse and execute the template
 	tmpl, err := template.ParseFiles("templates/index.html")
