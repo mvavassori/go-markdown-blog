@@ -167,6 +167,11 @@ main article h2 a:hover {
   font-size: 12px;
 }
 
+/* About */
+.about {
+  font-size: large;
+}
+
 /* Footer */
 footer {
   background-color: #333;
