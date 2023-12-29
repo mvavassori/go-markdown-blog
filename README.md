@@ -10,6 +10,7 @@ This project presents a minimalist blog platform built using only the Go standar
 - **Go Standard Library**: Built using the powerful and efficient Go standard library, ensuring robust performance and stability.
 - **Markdown Support**: Utilizes the lightweight [gomarkdown/markdown](https://github.com/gomarkdown/markdown) package for converting markdown to HTML, streamlining the content creation process.
 - **Minimalist Design**: A clean and uncluttered interface that focuses on content, free from distractions.
+- **Automatic Dark Mode**: When your system is set to dark mode, the blog will transform to dark mode.
 - **"No Technologies Detected"**: When analyzed with tools like Wappalyzer, the site proudly shows "No technologies detected", reflecting its minimalist and straightforward tech stack.
 
 ## Getting Started
