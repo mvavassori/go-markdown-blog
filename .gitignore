@@ -21,7 +21,7 @@
 go.work
 
 # Binary file standard name
-myblog
+go-markdown-blog
 
 # Temporary folder
 tmp
