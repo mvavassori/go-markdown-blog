@@ -1,8 +1,8 @@
-/* Base styles */
-html body {
+/* General Styles */
+html,
+body {
   margin: 0;
   font-family: arial, sans-serif;
-  font-size: 14px;
   height: 100%;
 }
 
@@ -10,8 +10,10 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: #f5f5f5;
 }
 
+/* Header Styles */
 header {
   background-color: #333;
   color: white;
@@ -21,35 +23,9 @@ header {
   align-items: center;
 }
 
-article {
-  margin: 4px;
-  padding: 4px 16px;
-  border-radius: 10px;
-  background-color: rgb(240, 240, 240);
-}
-
-.container {
-  width: 70%;
-  max-width: 1200px;
-  margin: auto;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  flex: 1;
-}
-
-.post {
-  width: 65%;
-  max-width: 1200px;
-  margin: auto;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  flex: 1;
-  font-size: large;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
+header a {
+  color: white;
+  text-decoration: none;
 }
 
 header h1 {
@@ -57,15 +33,15 @@ header h1 {
   font-size: 20px;
 }
 
-header a {
-  color: white;
-  text-decoration: none;
+header h1:hover {
+  color: #f0f0f0;
+  text-decoration: underline;
 }
 
 /* Navigation Styles */
 header nav ul {
   list-style: none;
-  display: flex; /* Keep the menu visible on desktop */
+  display: flex;
   margin-right: 20px;
 }
 
@@ -77,18 +53,16 @@ header nav ul li a {
   transition: color 0.3s ease-in-out, text-decoration 0.3s ease-in-out;
 }
 
-/* Hover effect */
 header nav ul li a:hover {
   color: #f0f0f0;
   text-decoration: underline;
 }
 
-/* Hide the checkbox */
+/* Hamburger Menu Styles */
 #menu-toggle {
   display: none;
 }
 
-/* Style the label as a hamburger icon */
 .hamburger-icon {
   display: none;
   font-size: 20px;
@@ -98,59 +72,136 @@ header nav ul li a:hover {
   z-index: 2;
 }
 
-/* Article styling */
-main article h2 a {
+/* Main Content Styles */
+.container,
+article {
+  width: 60%;
+  max-width: 1200px;
+  margin: 40px auto;
+  flex: 1;
+}
+
+.container {
+  font-size: large;
+}
+
+article {
+  font-size: 1.2em;
+}
+
+article h1 {
+  font-size: 3em;
+}
+
+article a {
+  color: rgb(46, 112, 255);
+}
+
+article ul,
+article ol {
+  margin-bottom: 12px;
+}
+
+article li {
+  margin-bottom: 12px;
+}
+
+article li:last-child {
+  margin-bottom: 0;
+}
+
+article li > ul,
+article li > ol {
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+article li a {
+  padding: 2px 0;
+  line-height: 1.5;
+  display: inline-block;
+}
+
+/* Code Styles */
+article code {
+  background-color: #eaeaea;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+article pre {
+  background-color: #eaeaea;
+  padding: 12px 16px;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+article pre code {
+  padding: 0;
+  background-color: transparent;
+}
+
+/* Image Styles */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Post Styles */
+.post {
+  margin: 4px;
+  padding: 4px 16px;
+  border-radius: 10px;
+  background-color: #eaeaea;
+}
+
+.post h2 a {
   text-decoration: none;
   color: black;
 }
 
-/* Hover effect */
-main article h2 a:hover {
+.post h2 a:hover {
   text-decoration: underline;
 }
 
 .date {
-  color: rgb(104, 104, 104);
+  color: #686868;
   font-size: 12px;
+  margin-top: -10px;
 }
 
-/* About */
+/* About Page Styles */
 .about {
   font-size: large;
 }
 
-/* Footer */
+/* Footer Styles */
 footer {
   background-color: #333;
   color: white;
-  padding: 10px 0;
+  padding: 20px;
   margin-top: auto;
 }
 
-footer p {
-  margin-left: 20px;
-}
-
-/* Mobile styles */
+/* Mobile Styles */
 @media screen and (max-width: 600px) {
   header {
-    position: relative; /* Needed for absolute positioning of the hamburger icon */
+    position: relative;
   }
 
-  .container {
-    width: 97%;
-  }
-
-  .post {
+  .container,
+  article {
     width: 97%;
   }
 
   .menu-toggle {
     display: none;
   }
+
   header h1 {
     margin-left: 10px;
   }
+
   .hamburger-icon {
     display: block;
     margin-right: 10px;
@@ -159,9 +210,9 @@ footer p {
   header nav {
     position: fixed;
     top: 0;
-    right: -100%; /* Start off screen */
+    right: -100%;
     height: 100%;
-    width: 60%; /* Width of the sidebar */
+    width: 60%;
     background-color: #333;
     box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.5);
     transition: right 0.3s ease;
@@ -169,8 +220,8 @@ footer p {
   }
 
   header nav ul {
-    display: block; /* Always show the menu in the sidebar */
-    padding-top: 60px; /* Give some space for the hamburger icon */
+    display: block;
+    padding-top: 60px;
   }
 
   header nav ul li {
@@ -178,26 +229,36 @@ footer p {
     padding: 20px 0px 0px 0px;
   }
 
-  /* When the checkbox is checked, slide in the menu */
   #menu-toggle:checked + .hamburger-icon + nav {
-    right: 0; /* Bring the sidebar on screen */
+    right: 0;
   }
 }
 
+/* Dark Mode Styles */
 @media (prefers-color-scheme: dark) {
   body {
     background-color: rgb(24, 26, 27);
     color: rgb(232, 230, 227);
   }
-  article {
+
+  .post {
     background-color: rgb(32, 35, 37);
-    /* color: rgb(232, 230, 227); */
   }
-  main article h2 a {
-    text-decoration: none;
+
+  .post h2 a {
     color: rgb(232, 230, 227);
   }
+
   .date {
     color: rgb(166, 159, 147);
+  }
+
+  article a {
+    color: #749aff;
+  }
+
+  article code,
+  article pre {
+    background-color: #202325;
   }
 }
