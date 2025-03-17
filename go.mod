@@ -1,5 +1,5 @@
 module github.com/mvavassori/go-markdown-blog
 
-go 1.21.5
+go 1.22.0
 
-require github.com/gomarkdown/markdown v0.0.0-20231222211730-1d6d20845b47
+require github.com/gomarkdown/markdown v0.0.0-20250311123330-531bef5e742b
