@@ -77,6 +77,6 @@ echo "Restarting services on production server..."
 # ssh ${PROD_SERVER} "cd ${PROD_COMPOSE_DIR} && docker compose down && docker compose up -d"
 # # #
 
-ssh ${PROD_SERVER} "docker run -d --name temp-blog-test -p 80:8080 go-markdown-blog:latest"
+ssh ${PROD_SERVER} "docker stop temp-blog-test && docker run -d --name temp-blog-test -p 80:8080 go-markdown-blog:latest"
 
 echo "Deployment completed successfully!
