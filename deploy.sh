@@ -2,7 +2,7 @@
 set -e
 
 # Configuration
-PROD_SERVER="batman@91.99.49.37"
+PROD_SERVER="tutorial-server"
 LOCAL_TEMP_DIR="/tmp/docker-images"
 # PROD_COMPOSE_DIR="/home/batman/go-markdown-blog"
 # BUILD_COMPOSE_FILE="docker-compose.build.yaml"
