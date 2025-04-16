@@ -1,5 +1,4 @@
-# Start from the official Golang base image
-FROM --platform=arm64 golang:latest AS builder
+FROM golang:latest AS builder
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -16,8 +15,7 @@ COPY . .
 # Build the Go application
 RUN go build -o go-markdown-blog .
 
-# Start a new stage from a smaller base image
-FROM --platform=arm64 debian:stable-slim
+FROM debian:stable-slim
 
 # Set working directory
 WORKDIR /app

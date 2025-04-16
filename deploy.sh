@@ -2,7 +2,7 @@
 set -e
 
 # Configuration
-PROD_SERVER="batman@tutorial-server"
+PROD_SERVER="batman@91.99.49.37"
 PROD_COMPOSE_DIR="/home/batman/go-markdown-blog"
 # BUILD_COMPOSE_FILE="docker-compose.build.yaml"
 # ENV_FILE=".env.prod"
@@ -23,12 +23,16 @@ deploy_service() {
     # docker compose -f ${BUILD_COMPOSE_FILE} --env-file ${ENV_FILE} build ${service}
     # # #
     
-    docker build -t ${service} .
+    # For x86 cpus (assuming you're using a x86 cpu on your machine)
+    # docker build -t ${service} .
+
+    # For ARM cpus
+    docker buildx build --platform linux/arm64 -t ${service} .
     
     
     # Get the source and target image names
     if [ "$service" == "go-markdown-blog" ]; then
-        SOURCE_IMAGE="go-markdown-blog-prod:latest"
+        SOURCE_IMAGE="go-markdown-blog:latest"  # change if necessary
         TARGET_IMAGE="go-markdown-blog:latest"
     else
         echo "Unknown service: $service"
@@ -77,6 +81,25 @@ echo "Restarting services on production server..."
 # ssh ${PROD_SERVER} "cd ${PROD_COMPOSE_DIR} && docker compose down && docker compose up -d"
 # # #
 
-ssh ${PROD_SERVER} "docker stop temp-blog-test && docker run -d --name temp-blog-test -p 80:8080 go-markdown-blog:latest"
 
-echo "Deployment completed successfully!
+ssh ${PROD_SERVER} << 'EOF'
+  # Check if the container exists and remove it if it does
+  if docker ps -a --format '{{.Names}}' | grep -q "^temp-blog-test$"; then
+    echo "Container temp-blog-test exists. Stopping it..."
+    docker stop temp-blog-test
+    
+    echo "Removing container temp-blog-test..."
+    docker rm temp-blog-test
+    
+    echo "Container removed successfully."
+  else
+    echo "Container temp-blog-test does not exist."
+  fi
+  
+  # Create new container regardless of whether it previously existed
+  echo "Creating new container temp-blog-test..."
+  docker run -d --name temp-blog-test -p 80:8080 go-markdown-blog:latest
+  echo "Container created successfully."
+EOF
+
+echo "Deployment completed successfully!"

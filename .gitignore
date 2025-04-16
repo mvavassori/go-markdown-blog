@@ -28,3 +28,6 @@ tmp
 
 # .tar files for docker images
 *.tar
+
+# environment variables
+.env
