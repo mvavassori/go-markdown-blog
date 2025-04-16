@@ -3,10 +3,10 @@ set -e
 
 # Configuration
 PROD_SERVER="batman@91.99.49.37"
-PROD_COMPOSE_DIR="/home/batman/go-markdown-blog"
+LOCAL_TEMP_DIR="/tmp/docker-images"
+# PROD_COMPOSE_DIR="/home/batman/go-markdown-blog"
 # BUILD_COMPOSE_FILE="docker-compose.build.yaml"
 # ENV_FILE=".env.prod"
-LOCAL_TEMP_DIR="/tmp/docker-images"
 
 # Create temp directory if it doesn't exist
 mkdir -p ${LOCAL_TEMP_DIR}
@@ -34,6 +34,12 @@ deploy_service() {
     if [ "$service" == "go-markdown-blog" ]; then
         SOURCE_IMAGE="go-markdown-blog:latest"  # change if necessary
         TARGET_IMAGE="go-markdown-blog:latest"
+    # elif [ "$service" == "frontend" ]; then
+    #     SOURCE_IMAGE="frontend-prod:latest"
+    #     TARGET_IMAGE="frontend:latest"
+    # elif [ "$service" == "backend" ]; then
+    #     SOURCE_IMAGE="backend-prod:latest"
+    #     TARGET_IMAGE="backend:latest" 
     else
         echo "Unknown service: $service"
         exit 1
@@ -82,6 +88,7 @@ echo "Restarting services on production server..."
 # # #
 
 
+# Just for this example
 ssh ${PROD_SERVER} << 'EOF'
   # Check if the container exists and remove it if it does
   if docker ps -a --format '{{.Names}}' | grep -q "^temp-blog-test$"; then
